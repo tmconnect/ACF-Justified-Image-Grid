@@ -7,6 +7,8 @@ With the ACF – Justified Image Grid field it’s easy to create an elegant and
 
 The plugin is based on the <a href="http://miromannino.github.io/Justified-Gallery/" title="Justified Gallery Homepage" target="_blank">Justified Gallery</a> jQuery plugin and use the great <a href="http://brutaldesign.github.io/swipebox/" title="Swipebox Homepage" target="_blank">Swipebox</a> jQuery plugin.
 
+<a href="http://www.dreihochzwo.de/wordpress-plugins/advanced-custom-fields-addon-justified-image-grid/" title="Demo &amp; Info" target="_blank">Demo &amp; Info</a>
+
 Ideally, Justified Gallery tries to show images without modifying its aspect ratio and without cropping them. But, when limited by the maximum row size it sometimes crop images a little bit to fill the grid.
 
 The field settings allow an individual display of the grid
