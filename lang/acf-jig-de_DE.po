@@ -1,0 +1,259 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Custom Fields: Justified Image Grid v1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-02-19 04:25:47+0000\n"
+"Last-Translator: thomas <t.meyer@me.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: acf-justified-image-grid-v5.php:32
+#@ acf-jig
+msgid "Justified Image Grid"
+msgstr "Justified Image Grid"
+
+#: acf-justified-image-grid-v5.php:73
+#: gallery.php:47
+#@ acf
+msgid "Add Image to Gallery"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:74
+#: gallery.php:48
+#@ acf
+msgid "Edit Image"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:75
+#: gallery.php:49
+#@ acf
+msgid "Update Image"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:76
+#: gallery.php:50
+#@ acf
+msgid "uploaded to this post"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:77
+#: gallery.php:51
+#@ acf
+msgid "Maximum selection reached"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:370
+#: gallery.php:328
+#@ acf
+msgid "Length"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:390
+#: gallery.php:348
+#@ acf
+msgid "Edit"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:390
+#: gallery.php:348
+#@ acf
+msgid "Remove"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:466
+#: gallery.php:613
+#@ acf
+msgid "Minimum Selection"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:475
+#: gallery.php:623
+#@ acf
+msgid "Maximum Selection"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:484
+#: gallery.php:633
+#@ acf
+msgid "Preview Size"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:485
+#: gallery.php:634
+#@ acf
+msgid "Shown when entering data"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:493
+#@ acf-jig
+msgid "Row Height"
+msgstr "Höhe Bilderreihe"
+
+#: acf-justified-image-grid-v5.php:494
+#@ acf-jig
+msgid "The algorithm uses this as the base height of the thumbnails and tries to fit as much thumbnail it can fit in a row. This is just starting point for the algorithm, resulting rows height could also be slightly lesser than rowHeight."
+msgstr "Die Berechnung für die Bildgrößen nutzt diesen Wert als Basis für die Höhe der Bilder und versucht möglichst viele Bilder in einer Reihe zu platzieren. Dies dient aber nur als Startpunkt für die Berechnung und die letztendlich resultierende Höhe der Reihe kann leicht kleiner sein."
+
+#: acf-justified-image-grid-v5.php:501
+#@ acf-jig
+msgid "Max. Row Height"
+msgstr "Max. Höhe Bilderreihe"
+
+#: acf-justified-image-grid-v5.php:502
+#@ acf-jig
+msgid "The maximum height which would be allowed. If algorithm couldn't find a way to fit any image within limit, it will crop it and place it vertically in center."
+msgstr "Die maximal erlaubte Höhe für die Bilderreihe. Wenn die Berechnung für die Bildgröße das Bild nicht innerhalb des Limits einpassen kann, wird das Bild beschnitten und vertikal zentriert platziert."
+
+#: acf-justified-image-grid-v5.php:509
+#: gallery.php:643
+#@ acf-jig
+#@ acf
+msgid "Margin"
+msgstr "Rand"
+
+#: acf-justified-image-grid-v5.php:510
+#: gallery.php:644
+#@ acf-jig
+#@ acf
+msgid "Set the margin width for the grid"
+msgstr "Rand zwischen den Bildern"
+
+#: acf-justified-image-grid-v5.php:518
+#: gallery.php:655
+#@ acf-jig
+#@ acf
+msgid "Image Sizes"
+msgstr "Bild-Größen"
+
+#: acf-justified-image-grid-v5.php:519
+#: gallery.php:656
+#@ acf-jig
+#@ acf
+msgid "Select the image sizes used by the grid"
+msgstr "Auswahl der Bild-Größen für die Berechnung und Anzeige"
+
+#: acf-justified-image-grid-v5.php:527
+#@ acf-jig
+msgid "Swipebox"
+msgstr "Swipebox"
+
+#: acf-justified-image-grid-v5.php:528
+#@ acf-jig
+msgid "Do you want to use the Swipebox - a touchable jQuery lightbox?"
+msgstr "Soll die jQuery Swipebox genutzt werden?"
+
+#: acf-justified-image-grid-v5.php:533
+#@ acf
+msgid "Yes"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:534
+#@ acf
+msgid "No"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:540
+#: gallery.php:665
+#@ acf
+msgid "Library"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:541
+#: gallery.php:666
+#@ acf
+msgid "Limit the media library choice"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:546
+#: gallery.php:671
+#@ acf
+msgid "All"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:547
+#: gallery.php:672
+#@ acf
+msgid "Uploaded to post"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:625
+#: gallery.php:469
+#@ value
+msgid "namename"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:703
+#: gallery.php:547
+#@ acf
+msgid "Add to gallery"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:707
+#: gallery.php:551
+#@ acf
+msgid "Bulk actions"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:708
+#: gallery.php:552
+#@ acf
+msgid "Sort by date uploaded"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:709
+#: gallery.php:553
+#@ acf
+msgid "Sort by date modified"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:710
+#: gallery.php:554
+#@ acf
+msgid "Sort by title"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:711
+#: gallery.php:555
+#@ acf
+msgid "Reverse current order"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:729
+#: gallery.php:573
+#@ acf
+msgid "Close"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:732
+#: gallery.php:576
+#@ acf
+msgid "Update"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:1115
+#: gallery.php:765
+#, php-format
+#@ acf
+msgid "%s requires at least %s selection"
+msgid_plural "%s requires at least %s selections"
+msgstr[0] ""
+msgstr[1] ""
+
+#: gallery.php:36
+#@ acf
+msgid "Gallery"
+msgstr ""
+
