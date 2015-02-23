@@ -491,7 +491,7 @@ class acf_field_justified_image_grid extends acf_field {
 		// show_captions
 		acf_render_field_setting( $field, array(
 			'label'			=> __('Show Captions','acf-jig'),
-			'instructions'	=> __('Decide if you want to have a fixed height. This mean that all the rows will be exactly with the specified rowHeight.','acf-jig'),
+			'instructions'	=> __('Show image captions on hover.','acf-jig'),
 			'type'			=> 'radio',
 			'name'			=> 'show_captions',
 			'layout'		=> 'horizontal',
