@@ -136,32 +136,23 @@ class acf_field_justified_image_grid extends acf_field {
 			'id'			=>	0,
 			'field_key'		=>	'',
 			'nonce'			=>	'',
-		));
-		
+		));		
 		
 		// validate
-		if( ! wp_verify_nonce($options['nonce'], 'acf_nonce') ) {
-			
-			die();
-			
+		if( ! wp_verify_nonce($options['nonce'], 'acf_nonce') ) {			
+			die();			
 		}
 		
-		if( empty($options['id']) ) {
-		
-			die();
-			
-		}
-		
+		if( empty($options['id']) ) {		
+			die();			
+		}		
 		
 		// load field
 		$field = acf_get_field( $options['field_key'] );
 		
-		if( !$field ) {
-		
-			die();
-			
-		}
-		
+		if( !$field ) {		
+			die();			
+		}		
 		
 		// render
 		$this->render_jig_attachment( $options['id'], $field );
@@ -188,21 +179,14 @@ class acf_field_justified_image_grid extends acf_field {
 		
 		// validate
 		if( ! wp_verify_nonce($_REQUEST['nonce'], 'acf_nonce') ) {
+			wp_send_json_error();			
+		}		
 		
-			wp_send_json_error();
-			
-		}
+		if( empty($_REQUEST['attachments']) ) {		
+			wp_send_json_error();			
+		}		
 		
-		
-		if( empty($_REQUEST['attachments']) ) {
-		
-			wp_send_json_error();
-			
-		}
-		
-		
-		foreach( $_REQUEST['attachments'] as $id => $changes ) {
-			
+		foreach( $_REQUEST['attachments'] as $id => $changes ) {			
 			if ( ! current_user_can( 'edit_post', $id ) )
 				wp_send_json_error();
 				
@@ -226,16 +210,13 @@ class acf_field_justified_image_grid extends acf_field {
 					$alt = wp_strip_all_tags( $alt, true );
 					update_post_meta( $id, '_wp_attachment_image_alt', wp_slash( $alt ) );
 				}
-			}
-			
+			}			
 			
 			// save post
-			wp_update_post( $post );
-			
+			wp_update_post( $post );			
 			
 			// save meta
-			acf_save_post( $id );
-						
+			acf_save_post( $id );						
 		}
 		
 		wp_send_json_success();
@@ -266,33 +247,22 @@ class acf_field_justified_image_grid extends acf_field {
 			'sort'			=>	'date',
 			'field_key'		=>	'',
 			'nonce'			=>	'',
-		));
-		
+		));		
 		
 		// validate
-		if( ! wp_verify_nonce($args['nonce'], 'acf_nonce') ) {
-		
+		if( ! wp_verify_nonce($args['nonce'], 'acf_nonce') ) {		
 			wp_send_json_error();
-			
-		}
-		
+		}		
 		
 		// reverse
-		if( $args['sort'] == 'reverse' ) {
+		if( $args['sort'] == 'reverse' ) {		
+			$ids = array_reverse($args['ids']);			
+			wp_send_json_success($ids);			
+		}		
 		
-			$ids = array_reverse($args['ids']);
-			
-			wp_send_json_success($ids);
-			
-		}
-		
-		
-		if( $args['sort'] == 'title' ) {
-			
-			$order = 'ASC';
-			
-		}
-		
+		if( $args['sort'] == 'title' ) {			
+			$order = 'ASC';			
+		}		
 		
 		// find attachments (DISTINCT POSTS)
 		$ids = get_posts(array(
@@ -303,20 +273,14 @@ class acf_field_justified_image_grid extends acf_field {
 			'order'			=> $order,
 			'orderby'		=> $args['sort'],
 			'fields'		=> 'ids'		
-		));
-		
+		));		
 		
 		// success
-		if( !empty($ids) ) {
-		
-			wp_send_json_success($ids);
-			
+		if( !empty($ids) ) {		
+			wp_send_json_success($ids);			
 		}
-		
-		
 		// failure
-		wp_send_json_error();
-		
+		wp_send_json_error();		
 	}
 	
 	
@@ -340,49 +304,32 @@ class acf_field_justified_image_grid extends acf_field {
 		$thumb = '';
 		$prefix = "attachments[{$id}]";
 		$compat = get_compat_media_markup( $id );
-		$dimentions = '';
-		
+		$dimentions = '';		
 		
 		// thumb
-		if( isset($attachment['thumb']['src']) ) {
-			
+		if( isset($attachment['thumb']['src']) ) {			
 			// video
-			$thumb = $attachment['thumb']['src'];
-			
-		} elseif( isset($attachment['sizes']['thumbnail']['url']) ) {
-			
+			$thumb = $attachment['thumb']['src'];			
+		} elseif( isset($attachment['sizes']['thumbnail']['url']) ) {			
 			// image
-			$thumb = $attachment['sizes']['thumbnail']['url'];
-			
-		} elseif( $attachment['type'] === 'image' ) {
-			
+			$thumb = $attachment['sizes']['thumbnail']['url'];			
+		} elseif( $attachment['type'] === 'image' ) {			
 			// svg
-			$thumb = $attachment['url'];
-			
-		} else {
-			
+			$thumb = $attachment['url'];			
+		} else {			
 			// fallback (perhaps attachment does not exist)
-			$thumb = $attachment['icon'];
-				
+			$thumb = $attachment['icon'];				
 		}
-		
-		
 		
 		// dimentions
-		if( $attachment['type'] === 'audio' ) {
-			
-			$dimentions = __('Length', 'acf') . ': ' . $attachment['fileLength'];
-			
-		} elseif( !empty($attachment['width']) ) {
-			
-			$dimentions = $attachment['width'] . ' x ' . $attachment['height'];
-			
+		if( $attachment['type'] === 'audio' ) {			
+			$dimentions = __('Length', 'acf') . ': ' . $attachment['fileLength'];			
+		} elseif( !empty($attachment['width']) ) {			
+			$dimentions = $attachment['width'] . ' x ' . $attachment['height'];			
 		}
 		
-		if( $attachment['filesizeHumanReadable'] ) {
-			
-			$dimentions .=  ' (' . $attachment['filesizeHumanReadable'] . ')';
-			
+		if( $attachment['filesizeHumanReadable'] ) {			
+			$dimentions .=  ' (' . $attachment['filesizeHumanReadable'] . ')';			
 		}
 		
 		?>
@@ -438,8 +385,7 @@ class acf_field_justified_image_grid extends acf_field {
 		</table>
 		<?php echo $compat['item']; ?>
 		
-		<?php
-		
+		<?php		
 	}
 	
 	
@@ -470,8 +416,7 @@ class acf_field_justified_image_grid extends acf_field {
 		$field['border'] = empty($field['border']) ? '0' : $field['border'];
 		$field['backcolor'] = empty($field['backcolor']) ? '' : $field['backcolor'];
 		$field['randomize'] = empty($field['randomize']) ? 'false' : $field['randomize'];
-		$field['swipebox'] = empty($field['swipebox']) ? 'true' : $field['swipebox'];
-		
+		$field['swipebox'] = empty($field['swipebox']) ? 'true' : $field['swipebox'];		
 		
 		// min
 		acf_render_field_setting( $field, array(
@@ -629,11 +574,8 @@ class acf_field_justified_image_grid extends acf_field {
 				'all'			=> __('All', 'acf'),
 				'uploadedTo'	=> __('Uploaded to post', 'acf')
 			)
-		));
-		
+		));		
 	}
-	
-	
 	
 	/*
 	*  render_field()
@@ -650,8 +592,7 @@ class acf_field_justified_image_grid extends acf_field {
 	function render_field( $field ) {
 
 		// enqueue
-		acf_enqueue_uploader();
-		
+		acf_enqueue_uploader();		
 		
 		// vars
 		$posts = array();
@@ -673,25 +614,21 @@ class acf_field_justified_image_grid extends acf_field {
 			'randomize'			=> $field['randomize'],
 			'swipebox'			=> $field['swipebox'],
 			'image_sizes'		=> $field['image_sizes'],
-		);
-		
+		);		
 		
 		// set gallery height
 		$height = acf_get_user_setting('gallery_height', 400);
 		$height = max( $height, 200 ); // minimum height is 200
-		$atts['style'] = "height:{$height}px";
-		
+		$atts['style'] = "height:{$height}px";		
 		
 		// load posts
 		if( !empty($field['value']) ) {
 			
 			// force value to array
-			$field['value'] = acf_force_type_array( $field['value'] );
-			
+			$field['value'] = acf_force_type_array( $field['value'] );			
 			
 			// convert values to int
-			$field['value'] = array_map('intval', $field['value']);
-			
+			$field['value'] = array_map('intval', $field['value']);			
 			
 			// load posts in 1 query to save multiple DB calls from following code
 			$posts = get_posts(array(
@@ -700,10 +637,8 @@ class acf_field_justified_image_grid extends acf_field {
 				'post_status'		=> 'any',
 				'post__in'			=> $field['value'],
 				'orderby'			=> 'post__in'
-			));
-			
-		}
-		
+			));			
+		}		
 		
 		?>
 <div <?php acf_esc_attr_e($atts); ?>>
@@ -843,218 +778,15 @@ class acf_field_justified_image_grid extends acf_field {
 	*
 	*  @param	n/a
 	*  @return	n/a
-	*/
-
+	*/	
 	
-	
-	function input_admin_enqueue_scripts() {
-		
-		$dir = plugin_dir_url( __FILE__ );
-		
-		
+	function input_admin_enqueue_scripts() {		
+		$dir = plugin_dir_url( __FILE__ );		
 		// register & include JS
 		wp_register_script( 'acf-input-justified_image_grid', "{$dir}js/input.js" );
 		wp_enqueue_script('acf-input-justified_image_grid');
-		
-		
-		
-		
 	}
 	
-	
-	
-	
-	/*
-	*  input_admin_head()
-	*
-	*  This action is called in the admin_head action on the edit screen where your field is created.
-	*  Use this action to add CSS and JavaScript to assist your render_field() action.
-	*
-	*  @type	action (admin_head)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	/*
-		
-	function input_admin_head() {
-	
-		
-		
-	}
-	
-	*/
-	
-	
-	/*
-	*  input_form_data()
-	*
-	*  This function is called once on the 'input' page between the head and footer
-	*  There are 2 situations where ACF did not load during the 'acf/input_admin_enqueue_scripts' and 
-	*  'acf/input_admin_head' actions because ACF did not know it was going to be used. These situations are
-	*  seen on comments / user edit forms on the front end. This function will always be called, and includes
-	*  $args that related to the current screen such as $args['post_id']
-	*
-	*  @type	function
-	*  @date	6/03/2014
-	*  @since	5.0.0
-	*
-	*  @param	$args (array)
-	*  @return	n/a
-	*/
-	
-	/*
-	
-	function input_form_data( $args ) {
-		
-		
-	
-	}
-	
-	*/
-	
-	
-	/*
-	*  input_admin_footer()
-	*
-	*  This action is called in the admin_footer action on the edit screen where your field is created.
-	*  Use this action to add CSS and JavaScript to assist your render_field() action.
-	*
-	*  @type	action (admin_footer)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	/*
-		
-	function input_admin_footer() {
-	
-		
-		
-	}
-	
-	*/
-	
-	
-	/*
-	*  field_group_admin_enqueue_scripts()
-	*
-	*  This action is called in the admin_enqueue_scripts action on the edit screen where your field is edited.
-	*  Use this action to add CSS + JavaScript to assist your render_field_options() action.
-	*
-	*  @type	action (admin_enqueue_scripts)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	/*
-	
-	function field_group_admin_enqueue_scripts() {
-		
-	}
-	
-	*/
-
-	
-	/*
-	*  field_group_admin_head()
-	*
-	*  This action is called in the admin_head action on the edit screen where your field is edited.
-	*  Use this action to add CSS and JavaScript to assist your render_field_options() action.
-	*
-	*  @type	action (admin_head)
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	n/a
-	*  @return	n/a
-	*/
-
-	/*
-	
-	function field_group_admin_head() {
-	
-	}
-	
-	*/
-
-
-	/*
-	*  load_value()
-	*
-	*  This filter is applied to the $value after it is loaded from the db
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value (mixed) the value found in the database
-	*  @param	$post_id (mixed) the $post_id from which the value was loaded
-	*  @param	$field (array) the field array holding all the field options
-	*  @return	$value
-	*/
-	
-	/*
-	
-	function load_value( $value, $post_id, $field ) {
-		
-		return $value;
-		
-	}
-	
-	*/
-	
-	
-	/*
-	*  update_value()
-	*
-	*  This filter is applied to the $value before it is saved in the db
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value (mixed) the value found in the database
-	*  @param	$post_id (mixed) the $post_id from which the value was loaded
-	*  @param	$field (array) the field array holding all the field options
-	*  @return	$value
-	*/
-	
-	/*
-	
-	function update_value( $value, $post_id, $field ) {
-		
-		return $value;
-		
-	}
-	
-	*/
-	
-	
-	/*
-	*  format_value()
-	*
-	*  This filter is appied to the $value after it is loaded from the db and before it is returned to the template
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value (mixed) the value which was loaded from the database
-	*  @param	$post_id (mixed) the $post_id from which the value was loaded
-	*  @param	$field (array) the field array holding all the field options
-	*
-	*  @return	$value (mixed) the modified value
-	*/
 	
 	function format_value( $value, $post_id, $field ) {
 		
@@ -1133,7 +865,7 @@ class acf_field_justified_image_grid extends acf_field {
 					$i = 0;
 					foreach ($image_sizes as $image_size) {
 						if ( $i++ == 0 ) {
-							$small_image        = $image["url"][$image_size];
+							$small_image        = $image["sizes"][$image_size];
 							$small_image_width  = $image["sizes"][$image_size . '-width'];
 							$small_image_height = $image["sizes"][$image_size . '-height'];
 						}
