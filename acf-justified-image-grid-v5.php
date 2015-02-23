@@ -1130,15 +1130,24 @@ class acf_field_justified_image_grid extends acf_field {
 			foreach ($value['images'] as $image) {
 				$size_str = array();
 				if ( $image_sizes ) {
-					// $image_sizes = array_reverse($field['image_sizes']);
+					$i = 0;
 					foreach ($image_sizes as $image_size) {
+						if ( $i++ == 0 ) {
+							$small_image        = $image["url"][$image_size];
+							$small_image_width  = $image["sizes"][$image_size . '-width'];
+							$small_image_height = $image["sizes"][$image_size . '-height'];
+						}
 						$size_str[] = '{"width" : "' . $image["sizes"][$image_size . '-width'] . '", "height" : "' . $image["sizes"][$image_size . '-height'] . '"}';
 					}
+				} else {
+					$small_image        = $image["url"];
+					$small_image_width  = $image["width"];
+					$small_image_height = $image["height"];					
 				}
 				$img_sizes = '[' . implode(",", $size_str) . ']';
 				
 				echo "<figure>";					
-						echo "<img src='" . $image["url"] . "' width='" . $image["width"] . "' height='" . $image["height"] . "' alt='" . esc_attr($image["title"]) . "' data-sizes='" . $img_sizes . "' data-url='" . $image["url"] . "' />";
+						echo "<img src='" . $small_image . "' width='" . $small_image_width . "' height='" . $small_image_height . "' alt='" . esc_attr($image["title"]) . "' data-sizes='" . $img_sizes . "' data-url='" . $image["url"] . "' />";
 						echo "<figcaption>";
 							if ( $show_captions == 'true' ) {
 									echo '<div>';
