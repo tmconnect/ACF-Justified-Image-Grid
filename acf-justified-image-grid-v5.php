@@ -84,7 +84,7 @@ class acf_field_justified_image_grid extends acf_field {
 		);
 
 		// actions
-		add_action('wp_ajax_acf/fields/gallery/get_jig_attachment',				array($this, 'ajax_get_jig_attachment'));
+		add_action('wp_ajax_acf/fields/gallery/get_jig_attachment'				array($this, 'ajax_get_jig_attachment'));
 		add_action('wp_ajax_nopriv_acf/fields/gallery/get_jig_attachment',		array($this, 'ajax_get_jig_attachment'));
 		
 		add_action('wp_ajax_acf/fields/gallery/update_jig_attachment',			array($this, 'ajax_update_jig_attachment'));
@@ -94,7 +94,7 @@ class acf_field_justified_image_grid extends acf_field {
 		add_action('wp_ajax_nopriv_acf/fields/gallery/get_jig_sort_order',		array($this, 'ajax_get_jig_sort_order'));
 
 		// Enqueue icons style in the frontend
-		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_enqueue' ) );		
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_enqueue' ) );
 				
 		// do not delete!
 		parent::__construct();
@@ -136,22 +136,22 @@ class acf_field_justified_image_grid extends acf_field {
 			'id'			=>	0,
 			'field_key'		=>	'',
 			'nonce'			=>	'',
-		));		
+		));
 		
 		// validate
 		if( ! wp_verify_nonce($options['nonce'], 'acf_nonce') ) {			
-			die();			
+			die();
 		}
 		
 		if( empty($options['id']) ) {		
-			die();			
+			die();
 		}		
 		
 		// load field
 		$field = acf_get_field( $options['field_key'] );
 		
 		if( !$field ) {		
-			die();			
+			die();
 		}		
 		
 		// render
@@ -179,11 +179,11 @@ class acf_field_justified_image_grid extends acf_field {
 		
 		// validate
 		if( ! wp_verify_nonce($_REQUEST['nonce'], 'acf_nonce') ) {
-			wp_send_json_error();			
+			wp_send_json_error();
 		}		
 		
 		if( empty($_REQUEST['attachments']) ) {		
-			wp_send_json_error();			
+			wp_send_json_error();
 		}		
 		
 		foreach( $_REQUEST['attachments'] as $id => $changes ) {			
@@ -213,10 +213,10 @@ class acf_field_justified_image_grid extends acf_field {
 			}			
 			
 			// save post
-			wp_update_post( $post );			
+			wp_update_post( $post );
 			
 			// save meta
-			acf_save_post( $id );						
+			acf_save_post( $id );
 		}
 		
 		wp_send_json_success();
@@ -247,7 +247,7 @@ class acf_field_justified_image_grid extends acf_field {
 			'sort'			=>	'date',
 			'field_key'		=>	'',
 			'nonce'			=>	'',
-		));		
+		));
 		
 		// validate
 		if( ! wp_verify_nonce($args['nonce'], 'acf_nonce') ) {		
@@ -256,12 +256,12 @@ class acf_field_justified_image_grid extends acf_field {
 		
 		// reverse
 		if( $args['sort'] == 'reverse' ) {		
-			$ids = array_reverse($args['ids']);			
-			wp_send_json_success($ids);			
+			$ids = array_reverse($args['ids']);
+			wp_send_json_success($ids);
 		}		
 		
 		if( $args['sort'] == 'title' ) {			
-			$order = 'ASC';			
+			$order = 'ASC';
 		}		
 		
 		// find attachments (DISTINCT POSTS)
@@ -273,14 +273,14 @@ class acf_field_justified_image_grid extends acf_field {
 			'order'			=> $order,
 			'orderby'		=> $args['sort'],
 			'fields'		=> 'ids'		
-		));		
+		));
 		
 		// success
 		if( !empty($ids) ) {		
-			wp_send_json_success($ids);			
+			wp_send_json_success($ids);
 		}
 		// failure
-		wp_send_json_error();		
+		wp_send_json_error();
 	}
 	
 	
@@ -304,32 +304,32 @@ class acf_field_justified_image_grid extends acf_field {
 		$thumb = '';
 		$prefix = "attachments[{$id}]";
 		$compat = get_compat_media_markup( $id );
-		$dimentions = '';		
+		$dimentions = '';
 		
 		// thumb
 		if( isset($attachment['thumb']['src']) ) {			
 			// video
-			$thumb = $attachment['thumb']['src'];			
+			$thumb = $attachment['thumb']['src'];
 		} elseif( isset($attachment['sizes']['thumbnail']['url']) ) {			
 			// image
-			$thumb = $attachment['sizes']['thumbnail']['url'];			
+			$thumb = $attachment['sizes']['thumbnail']['url'];
 		} elseif( $attachment['type'] === 'image' ) {			
 			// svg
-			$thumb = $attachment['url'];			
+			$thumb = $attachment['url'];
 		} else {			
 			// fallback (perhaps attachment does not exist)
-			$thumb = $attachment['icon'];				
+			$thumb = $attachment['icon'];
 		}
 		
 		// dimentions
 		if( $attachment['type'] === 'audio' ) {			
-			$dimentions = __('Length', 'acf') . ': ' . $attachment['fileLength'];			
+			$dimentions = __('Length', 'acf') . ': ' . $attachment['fileLength'];
 		} elseif( !empty($attachment['width']) ) {			
-			$dimentions = $attachment['width'] . ' x ' . $attachment['height'];			
+			$dimentions = $attachment['width'] . ' x ' . $attachment['height'];
 		}
 		
 		if( $attachment['filesizeHumanReadable'] ) {			
-			$dimentions .=  ' (' . $attachment['filesizeHumanReadable'] . ')';			
+			$dimentions .=  ' (' . $attachment['filesizeHumanReadable'] . ')';
 		}
 		
 		?>
@@ -416,7 +416,7 @@ class acf_field_justified_image_grid extends acf_field {
 		$field['border'] = empty($field['border']) ? '0' : $field['border'];
 		$field['backcolor'] = empty($field['backcolor']) ? '' : $field['backcolor'];
 		$field['randomize'] = empty($field['randomize']) ? 'false' : $field['randomize'];
-		$field['swipebox'] = empty($field['swipebox']) ? 'true' : $field['swipebox'];		
+		$field['swipebox'] = empty($field['swipebox']) ? 'true' : $field['swipebox'];
 		
 		// min
 		acf_render_field_setting( $field, array(
@@ -574,7 +574,7 @@ class acf_field_justified_image_grid extends acf_field {
 				'all'			=> __('All', 'acf'),
 				'uploadedTo'	=> __('Uploaded to post', 'acf')
 			)
-		));		
+		));
 	}
 	
 	/*
@@ -592,7 +592,7 @@ class acf_field_justified_image_grid extends acf_field {
 	function render_field( $field ) {
 
 		// enqueue
-		acf_enqueue_uploader();		
+		acf_enqueue_uploader();
 		
 		// vars
 		$posts = array();
@@ -614,21 +614,21 @@ class acf_field_justified_image_grid extends acf_field {
 			'randomize'			=> $field['randomize'],
 			'swipebox'			=> $field['swipebox'],
 			'image_sizes'		=> $field['image_sizes'],
-		);		
+		);
 		
 		// set gallery height
 		$height = acf_get_user_setting('gallery_height', 400);
 		$height = max( $height, 200 ); // minimum height is 200
-		$atts['style'] = "height:{$height}px";		
+		$atts['style'] = "height:{$height}px";
 		
 		// load posts
 		if( !empty($field['value']) ) {
-			
+					
 			// force value to array
-			$field['value'] = acf_force_type_array( $field['value'] );			
+			$field['value'] = acf_force_type_array( $field['value'] );
 			
 			// convert values to int
-			$field['value'] = array_map('intval', $field['value']);			
+			$field['value'] = array_map('intval', $field['value']);
 			
 			// load posts in 1 query to save multiple DB calls from following code
 			$posts = get_posts(array(
@@ -637,8 +637,8 @@ class acf_field_justified_image_grid extends acf_field {
 				'post_status'		=> 'any',
 				'post__in'			=> $field['value'],
 				'orderby'			=> 'post__in'
-			));			
-		}		
+			));
+		}
 		
 		?>
 <div <?php acf_esc_attr_e($atts); ?>>
@@ -781,7 +781,7 @@ class acf_field_justified_image_grid extends acf_field {
 	*/	
 	
 	function input_admin_enqueue_scripts() {		
-		$dir = plugin_dir_url( __FILE__ );		
+		$dir = plugin_dir_url( __FILE__ );
 		// register & include JS
 		wp_register_script( 'acf-input-justified_image_grid', "{$dir}js/input.js" );
 		wp_enqueue_script('acf-input-justified_image_grid');
@@ -792,7 +792,7 @@ class acf_field_justified_image_grid extends acf_field {
 		
 		// bail early if no value
 		if( empty($value) ) {			
-			return $value;		
+			return $value;
 		}
 		
 		// force value to array
@@ -840,7 +840,7 @@ class acf_field_justified_image_grid extends acf_field {
 				jQuery('.image-container').each(function (index, el) {
 					i++;
 					jQuery(el).justifiedGallery({
-						rel: 'gallery' + i,					
+						rel: 'gallery' + i,
 						cssAnimation		: true,
 						rowHeight			: <?php echo $row_height; ?>,
 						maxRowHeight		: <?php echo $max_row_height; ?>,
@@ -874,11 +874,11 @@ class acf_field_justified_image_grid extends acf_field {
 				} else {
 					$small_image        = $image["url"];
 					$small_image_width  = $image["width"];
-					$small_image_height = $image["height"];					
+					$small_image_height = $image["height"];
 				}
 				$img_sizes = '[' . implode(",", $size_str) . ']';
 				
-				echo "<figure>";					
+				echo "<figure>";
 						echo "<img src='" . $small_image . "' width='" . $small_image_width . "' height='" . $small_image_height . "' alt='" . esc_attr($image["title"]) . "' data-sizes='" . $img_sizes . "' data-url='" . $image["url"] . "' />";
 						echo "<figcaption>";
 							if ( $show_captions == 'true' ) {
@@ -889,7 +889,7 @@ class acf_field_justified_image_grid extends acf_field {
 							if ( $swipebox == 'yes' ) {
 								echo "<a class='swipebox' href='" . $image["url"] . "' data-title='" . esc_attr($image["title"]) . "'></a>";
 							}
-						echo "</figcaption>";						
+						echo "</figcaption>";
 				echo "</figure>";
 			}		
 		echo '</div>';

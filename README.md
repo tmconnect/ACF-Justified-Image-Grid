@@ -9,7 +9,7 @@ The plugin is based on the <a href="http://miromannino.github.io/Justified-Galle
 
 <a href="http://www.dreihochzwo.de/wordpress-plugins/advanced-custom-fields-addon-justified-image-grid/" title="Demo &amp; Info" target="_blank">Demo &amp; Info</a>
 
-Ideally, Justified Gallery tries to show images without modifying its aspect ratio and without cropping them. But, when limited by the maximum row size it sometimes crop images a little bit to fill the grid.
+Ideally, Justified Gallery tries to show images without modifying its aspect ratio and without cropping them. But, when limited by the maximum row size it sometimes crops images a little bit to fill the grid.
 
 The field settings allow an individual display of the grid
 
@@ -34,7 +34,21 @@ Images are added to the grid by the Gallery Field of ACF which is used by the pl
 
 ![advanced custom field justified image grid field settings](http://www.dreihochzwo.de/download/acf-justified-image-grid-gallery-field.jpg)
 
-This version works only with ACF 5.
-
 Thanks to
 <a href="http://miromannino.github.io/Justified-Gallery/" title="Justified Gallery Homepage" target="_blank">Miro Mannino</a> for the Justified Gallery and <a href="http://brutaldesign.github.io/swipebox/" title="Swipebox Homepage" target="_blank">Constantin Saguin</a> for the Swipebox
+
+
+### Compatibility
+
+This version works only with ACF 5.
+
+
+### Changelog
+**1.0.2**
+* Small bugfixes
+
+**1.0.1**
+* Update for effective image loading 
+
+**1.0.0**
+* First release

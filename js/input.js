@@ -696,11 +696,12 @@
 			
 			// popup
 			var frame = acf.media.popup({
-				'title'		: acf._e('image', 'edit'),
-				'button'	: acf._e('image', 'update'),
-				'mode'		: 'edit',
-				'id'		: id,
-				'select'	: function( attachment ){
+				
+				title:		acf._e('image', 'edit'),
+				button:		acf._e('image', 'update'),
+				mode:		'edit',
+				id:			id,
+				select:		function( attachment ){
 					
 					// override url
 					if( acf.isset(attachment, 'attributes', 'sizes', self.o.preview_size, 'url') ) {
@@ -809,8 +810,7 @@
 			
 			
 			// vars
-			var library = this.o.library,
-				preview_size = this.o.preview_size;
+			var preview_size = this.o.preview_size;
 			
 			
 			// reference
@@ -819,11 +819,14 @@
 			
 			// popup
 			var frame = acf.media.popup({
+				
 				title:		acf._e('gallery', 'select'),
 				mode:		'select',
-				type:		'all',
+				type:		'',
+				field:		acf.get_field_key(this.$field),
 				multiple:	'add',
-				library:	library,
+				library:	this.o.library,
+				mime_types: this.o.mime_types,
 				
 				select: function( attachment, i ) {
 					
