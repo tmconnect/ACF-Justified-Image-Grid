@@ -44,6 +44,9 @@ This version works only with ACF 5.
 
 
 ### Changelog
+**1.0.3**
+* Small bugfixes
+
 **1.0.2**
 * Small bugfixes
 

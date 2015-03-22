@@ -84,7 +84,7 @@ class acf_field_justified_image_grid extends acf_field {
 		);
 
 		// actions
-		add_action('wp_ajax_acf/fields/gallery/get_jig_attachment'				array($this, 'ajax_get_jig_attachment'));
+		add_action('wp_ajax_acf/fields/gallery/get_jig_attachment',				array($this, 'ajax_get_jig_attachment'));
 		add_action('wp_ajax_nopriv_acf/fields/gallery/get_jig_attachment',		array($this, 'ajax_get_jig_attachment'));
 		
 		add_action('wp_ajax_acf/fields/gallery/update_jig_attachment',			array($this, 'ajax_update_jig_attachment'));
