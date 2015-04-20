@@ -877,9 +877,11 @@ class acf_field_justified_image_grid extends acf_field {
 					$small_image_height = $image["height"];
 				}
 				$img_sizes = '[' . implode(",", $size_str) . ']';
+			
+				$img_title =  !$image["alt"] ? esc_attr($image["title"]) : esc_attr($image["alt"]);
 				
 				echo "<figure>";
-						echo "<img src='" . $small_image . "' width='" . $small_image_width . "' height='" . $small_image_height . "' alt='" . esc_attr($image["title"]) . "' data-sizes='" . $img_sizes . "' data-url='" . $image["url"] . "' />";
+						echo "<img src='" . $small_image . "' width='" . $small_image_width . "' height='" . $small_image_height . "' alt='" . $img_title . "' data-sizes='" . $img_sizes . "' data-url='" . $image["url"] . "' />";
 						echo "<figcaption>";
 							if ( $show_captions == 'true' ) {
 									echo '<div>';
