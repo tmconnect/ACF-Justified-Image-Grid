@@ -965,11 +965,14 @@ function get_image_sizes() {
 		}
 	}
 
-	function cmp($a, $b) {
-		if ($a['height'] == $b['height']) {
-			return 0;
+	if (function_exists('cmp')) {
+		} else {
+		function cmp($a, $b) {
+			if ($a['height'] == $b['height']) {
+				return 0;
+			}
+			return ($a['height'] < $b['height']) ? -1 : 1;
 		}
-		return ($a['height'] < $b['height']) ? -1 : 1;
 	}
 
 	uasort($sizes, "cmp");
