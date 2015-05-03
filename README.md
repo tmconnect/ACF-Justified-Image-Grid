@@ -44,6 +44,9 @@ This version works only with ACF 5.
 
 
 ### Changelog
+**1.0.5**
+* Add possibility to use more than one image grid within one ACF field group and therefore on the same post/page
+
 **1.0.4**
 * Better handling for alt tags for images
 

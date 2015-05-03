@@ -64,10 +64,13 @@ class acf_field_justified_image_grid extends acf_field {
 		// Settings
 		$this->settings = array(
 			'justified_version'	=> '3.5.4',
+			'swipebox_version'	=> '1.3.0.2',
+			'acf_jig_version'	=> '1.0.5',
 			'justified_css' 	=> plugin_dir_url( __FILE__ ) . 'css/justifiedGallery.css',
 			'justified_js'		=> plugin_dir_url( __FILE__ ) . 'js/jquery.justifiedGallery.js',
 			'swipebox_css' 		=> plugin_dir_url( __FILE__ ) . 'js/swipebox/css/swipebox.css',
-			'swipebox_js'		=> plugin_dir_url( __FILE__ ) . 'js/swipebox/js/jquery.swipebox.min.js'
+			'swipebox_js'		=> plugin_dir_url( __FILE__ ) . 'js/swipebox/js/jquery.swipebox.min.js',
+			'custom_js'			=> plugin_dir_url( __FILE__ ) . 'js/acf-jig-custom.js'
 		);
 		
 		/*
@@ -93,8 +96,8 @@ class acf_field_justified_image_grid extends acf_field {
 		add_action('wp_ajax_acf/fields/gallery/get_jig_sort_order',				array($this, 'ajax_get_jig_sort_order'));
 		add_action('wp_ajax_nopriv_acf/fields/gallery/get_jig_sort_order',		array($this, 'ajax_get_jig_sort_order'));
 
-		// Enqueue icons style in the frontend
-		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_enqueue' ) );
+		// Enqueue styles & scripts in the frontend
+		add_action( 'wp_enqueue_scripts', array( $this, 'acf_jig_frontend_enqueue' ) );
 				
 		// do not delete!
 		parent::__construct();
@@ -106,13 +109,15 @@ class acf_field_justified_image_grid extends acf_field {
 	 *
 	 *  @since	1.0.0
 	 */
-	function frontend_enqueue() {
+	function acf_jig_frontend_enqueue() {
 		// Register Justidied Gallery script and css
-		wp_enqueue_style ( 'dhz_justified_css',	$this->settings['justified_css'], array(), '1.0' );
-		wp_enqueue_script( 'dhz_justified',		$this->settings['justified_js'], array( 'jquery' ), $this->settings['justified_version'], true );
+		wp_enqueue_style ( 'acf_jig_justified_css',	$this->settings['justified_css'], array(), $this->settings['justified_version'] );
+		wp_enqueue_script( 'acf_jig_justified',		$this->settings['justified_js'], array( 'jquery' ), $this->settings['justified_version'], true );
 		// Register Swipebox script and css
-		wp_enqueue_style ( 'dhz_swipe_css',		$this->settings['swipebox_css'], array(), '1.3.0.2' );
-		wp_enqueue_script( 'dhz_swipe_js',		$this->settings['swipebox_js'], array( 'jquery' ), '1.3.0.2', true );
+		wp_enqueue_style ( 'acf_jig_swipe_css',		$this->settings['swipebox_css'], array(), $this->settings['swipebox_version'] );
+		wp_enqueue_script( 'acf_jig_swipe_js',		$this->settings['swipebox_js'], array( 'jquery' ), $this->settings['swipebox_version'], true );
+		// Register custom script
+		wp_enqueue_script( 'acf_jig_custom',	$this->settings['custom_js'], array( 'jquery' ), $this->settings['acf_jig_version'], true );
 	}
 
 	/*
@@ -818,47 +823,25 @@ class acf_field_justified_image_grid extends acf_field {
 			$value['images'][] = acf_get_attachment( $post );
 		}
 
-		$row_height		= $field['row_height'];
-		$max_row_height	= $field['max_row_height'];
-		$lastrow		= $field['lastrow'];
-		$fixed_height	= $field['fixed_height'];
-		$show_captions	= $field['show_captions'];
-		$margin			= $field['margin'];
-		$border			= $field['border'];
 		$backcolor		= $field['backcolor'];
-		$randomize		= $field['randomize'];
-		$swipebox		= $field['swipebox'];
+		$show_captions	= $field['show_captions'];
 		$image_sizes	= $field['image_sizes'];
 		$swipebox		= $field['swipebox'];
 		
 		ob_start(); ?>
 
-		<script type="text/javascript">
-			jQuery(document).ready(function(){
-				var i = 0;
-				var swipebox = '<?php echo $swipebox; ?>';
-				jQuery('.image-container').each(function (index, el) {
-					i++;
-					jQuery(el).justifiedGallery({
-						rel: 'gallery' + i,
-						cssAnimation		: true,
-						rowHeight			: <?php echo $row_height; ?>,
-						maxRowHeight		: <?php echo $max_row_height; ?>,
-						lastRow				: '<?php echo $lastrow; ?>',
-						fixedHeight			: <?php echo $fixed_height; ?>,
-						captions			: <?php echo $show_captions; ?>,
-						margins				: <?php echo $margin; ?>,
-						border				: <?php echo $border; ?>,
-						randomize			: <?php echo $randomize; ?>,
-					});
-				}).on('jg.complete', function () {
-					if (i === 1 && swipebox === 'yes' ) jQuery('a.swipebox').swipebox(
-					); //swipebox, wants to be called only once to work properly
-				});
-
-			});
-		</script>
-		<?php echo '<div class="image-container"' . ($backcolor != '' ? 'style="background:' . $backcolor . ';"' : '') .'>';
+		<?php echo '<div class="image-container"' . ($backcolor != '' ? 'style="background:' . $backcolor . ';" ' : ' ') 
+		. 'data-id="' . $field['ID'] . '"' 
+		. 'data-row_height="' . $field['row_height'] . '"' 
+		. 'data-max_row_height="' . $field['max_row_height'] . '"' 
+		. 'data-lastrow="' . $field['lastrow'] . '"' 
+		. 'data-fixed_height="' . $field['fixed_height'] . '"' 
+		. 'data-show_captions="' . $show_captions . '"' 
+		. 'data-margin="' . $field['margin'] . '"' 
+		. 'data-border="' . $field['border'] . '"' 
+		. 'data-randomize="' . $field['randomize'] . '"' 
+		. 'data-swipebox="' . $swipebox	. '">';
+		
 			foreach ($value['images'] as $image) {
 				$size_str = array();
 				if ( $image_sizes ) {
@@ -889,7 +872,7 @@ class acf_field_justified_image_grid extends acf_field {
 									echo '</div>';
 							}
 							if ( $swipebox == 'yes' ) {
-								echo "<a class='swipebox' href='" . $image["url"] . "' data-title='" . esc_attr($image["title"]) . "'></a>";
+								echo '<a class="swipebox" data-rel="gallery' . $field['ID'] . '" href="' . $image["url"] . '" data-title="' . esc_attr($image["title"]) . '"></a>';
 							}
 						echo "</figcaption>";
 				echo "</figure>";
@@ -965,11 +948,13 @@ function get_image_sizes() {
 		}
 	}
 
-	function cmp($a, $b) {
-		if ($a['height'] == $b['height']) {
-			return 0;
+	if (!function_exists('cmp')) {
+		function cmp($a, $b) {
+			if ($a['height'] == $b['height']) {
+				return 0;
+			}
+			return ($a['height'] < $b['height']) ? -1 : 1;
 		}
-		return ($a['height'] < $b['height']) ? -1 : 1;
 	}
 
 	uasort($sizes, "cmp");
