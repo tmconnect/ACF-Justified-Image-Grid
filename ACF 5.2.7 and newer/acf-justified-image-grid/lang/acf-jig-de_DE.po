@@ -1,0 +1,301 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Advanced Custom Fields: Justified Image Grid v1.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2015-02-23 10:14:11+0000\n"
+"Last-Translator: thomas <t.meyer@me.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: German\n"
+"X-Poedit-Country: GERMANY\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: \n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: acf-justified-image-grid-v5.php:32
+#@ acf-jig
+msgid "Justified Image Grid"
+msgstr "Justified Image Grid"
+
+#: acf-justified-image-grid-v5.php:79
+#@ acf
+msgid "Add Image to Gallery"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:80
+#@ acf
+msgid "Edit Image"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:81
+#@ acf
+msgid "Update Image"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:82
+#@ acf
+msgid "uploaded to this post"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:83
+#@ acf
+msgid "Maximum selection reached"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:326
+#@ acf
+msgid "Length"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:341
+#@ acf
+msgid "Edit"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:341
+#@ acf
+msgid "Remove"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:423
+#@ acf
+msgid "Minimum Selection"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:432
+#@ acf
+msgid "Maximum Selection"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:441
+#@ acf
+msgid "Preview Size"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:442
+#@ acf
+msgid "Shown when entering data"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:450
+#@ acf-jig
+msgid "Row Height"
+msgstr "Höhe Bilderreihe"
+
+#: acf-justified-image-grid-v5.php:458
+#@ acf-jig
+msgid "Max. Row Height"
+msgstr "Max. Höhe Bilderreihe"
+
+#: acf-justified-image-grid-v5.php:546
+#@ acf-jig
+msgid "Image Sizes"
+msgstr "Bild-Größen"
+
+#: acf-justified-image-grid-v5.php:555
+#@ acf-jig
+msgid "Swipebox"
+msgstr "Swipebox"
+
+#: acf-justified-image-grid-v5.php:556
+#@ acf-jig
+msgid "Do you want to use the Swipebox - a touchable jQuery lightbox?"
+msgstr "Soll die jQuery Swipebox genutzt werden?"
+
+#: acf-justified-image-grid-v5.php:486
+#: acf-justified-image-grid-v5.php:499
+#: acf-justified-image-grid-v5.php:539
+#: acf-justified-image-grid-v5.php:561
+#@ acf
+msgid "Yes"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:487
+#: acf-justified-image-grid-v5.php:500
+#: acf-justified-image-grid-v5.php:540
+#: acf-justified-image-grid-v5.php:562
+#@ acf
+msgid "No"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:568
+#@ acf
+msgid "Library"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:569
+#@ acf
+msgid "Limit the media library choice"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:574
+#@ acf
+msgid "All"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:575
+#@ acf
+msgid "Uploaded to post"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:647
+#@ value
+msgid "namename"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:725
+#@ acf
+msgid "Add to gallery"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:729
+#@ acf
+msgid "Bulk actions"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:730
+#@ acf
+msgid "Sort by date uploaded"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:731
+#@ acf
+msgid "Sort by date modified"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:732
+#@ acf
+msgid "Sort by title"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:733
+#@ acf
+msgid "Reverse current order"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:751
+#@ acf
+msgid "Close"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:754
+#@ acf
+msgid "Update"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:930
+#, php-format
+#@ acf
+msgid "%s requires at least %s selection"
+msgid_plural "%s requires at least %s selections"
+msgstr[0] ""
+msgstr[1] ""
+
+#: acf-justified-image-grid-v5.php:451
+#@ acf-jig
+msgid "The approximately height of rows in pixel."
+msgstr "Die annähernde Höhe der Reihen"
+
+#: acf-justified-image-grid-v5.php:459
+#@ acf-jig
+msgid "The maximum row height in pixel. Negative value to haven't limits. Zero to have a limit of 1.5 x rowHeight."
+msgstr "Die maximale Höhe der Reihen. Ein negativer Wert hebt das Limit auf. Für ein Limit vom 1,5-fachen der Standardhöhe 0 eingeben."
+
+#: acf-justified-image-grid-v5.php:466
+#@ acf-jig
+msgid "Last Row"
+msgstr "Letzte Reihe"
+
+#: acf-justified-image-grid-v5.php:467
+#@ acf-jig
+msgid "Decide if you want to justify the last row or not, or to hide the row if it can't be justified"
+msgstr "Soll die letzte Reihe komplett aufgefüllt werden oder nicht? Oder soll sie ausgeblendet werden, wenn sie nicht komplett gefüllt ist?"
+
+#: acf-justified-image-grid-v5.php:472
+#@ acf
+msgid "Justify"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:473
+#@ acf
+msgid "No Justify"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:474
+#@ acf
+msgid "Hide"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:480
+#@ acf-jig
+msgid "Fixed height Rows"
+msgstr "Feste Höhe für Reihen"
+
+#: acf-justified-image-grid-v5.php:481
+#@ acf-jig
+msgid "Decide if you want to have a fixed height. This mean that all the rows will be exactly with the specified rowHeight. Depending on aspect ratio the images could be cropped."
+msgstr "Sollen die Reihe eine feste Höhe haben. Dadurch werden alle Reihen in der Standardhöhe dargestellt. Abhängig vom Seitenverhältnis können die Bilder dadurch beschnitten werden."
+
+#: acf-justified-image-grid-v5.php:493
+#@ acf-jig
+msgid "Show Captions"
+msgstr "Zeige Bildtitel"
+
+#: acf-justified-image-grid-v5.php:506
+#@ acf-jig
+msgid "Margin Width"
+msgstr "Abstand Breite"
+
+#: acf-justified-image-grid-v5.php:507
+#@ acf-jig
+msgid "Set the margin size for the grid"
+msgstr "Bestimmt den Abstand der Bilder"
+
+#: acf-justified-image-grid-v5.php:515
+#@ acf-jig
+msgid "Border Width"
+msgstr "Rahmen Breite"
+
+#: acf-justified-image-grid-v5.php:516
+#@ acf-jig
+msgid "Set the border size of the grid. With a negative value the border will be the same as the margins."
+msgstr "Bestimmt die Breite des Rahmens. Eine negative Eingabe setzt die Breit auf die gleiche Breite wie die des Abstands."
+
+#: acf-justified-image-grid-v5.php:524
+#@ acf
+msgid "Margin & Border Color"
+msgstr ""
+
+#: acf-justified-image-grid-v5.php:525
+#@ acf-jig
+msgid "Set the color for the margin and the border. Leave blank to make it transparent."
+msgstr "Bestimmt die Farbe für den Abstand und den Rahmen. Leerlassen für transparente Darstellung."
+
+#: acf-justified-image-grid-v5.php:533
+#@ acf-jig
+msgid "Randomize Images"
+msgstr "Zufällige Reihenfolge"
+
+#: acf-justified-image-grid-v5.php:534
+#@ acf-jig
+msgid "Automatically randomize or not the order of photos."
+msgstr "Zeigt die Bilder in zufälliger Reihenfolge an."
+
+#: acf-justified-image-grid-v5.php:547
+#@ acf-jig
+msgid "Select the image sizes used by the grid. You will only see image size that defined with a width of '9999 Pixel'. Make sure that the correct sizes are defined. "
+msgstr "Bildgrößen auswählen. Es werden nur Bildgrößen angezeigt, die eine Breite von '9999 Pixel' haben. Es muss sichergestellt sein, dass korrekte Bildgrößen definiert sind."
+
+#: acf-justified-image-grid-v5.php:494
+#@ acf-jig
+msgid "Show image captions on hover."
+msgstr "Zeige Bildtitel beim Überfahren  mit der Maus."
+
