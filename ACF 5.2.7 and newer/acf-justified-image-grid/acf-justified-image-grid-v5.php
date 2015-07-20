@@ -702,7 +702,7 @@ class acf_field_justified_image_grid extends acf_field {
 					<div class="<?php echo $thumb_class; ?>" data-id="<?php echo $post->ID; ?>">
 						<input type="hidden" name="<?php echo $field['name']; ?>[]" value="<?php echo $post->ID; ?>" />
 						<div class="margin" title="<?php echo $filename; ?>">
-							<div class="thumbnailssssssssssss">
+							<div class="thumbnail">
 								<img src="<?php echo $thumb_url; ?>"/>
 							</div>
 							<?php if( $type !== 'image' ): ?>
