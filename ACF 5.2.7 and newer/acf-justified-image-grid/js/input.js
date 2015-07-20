@@ -104,84 +104,55 @@
 			
 			// vars
 			var $th = $table.find('> thead > tr > th'),
-				available_width = 100,
-				count = 0;
+				available_width = 100;
 			
 			
-			// accomodate for order / remove
-			if( $th.filter('.order').exists() ) {
-				
-				available_width = 93;
-				
-			}
-			
-			
-			// clear widths
-			$th.removeAttr('width');
-			
-			
-			// update $th
-			$th = $th.not('.order, .remove, .hidden-by-conditional-logic');
-				
-			
-			// set custom widths first
-			$th.filter('[data-width]').each(function(){
-				
-				// bail early if hit limit
-				if( (count+1) == $th.length ) {
+						// clear widths
+						$th.css('width', 'auto');
+						
+						
+						// update $th
+						$th = $th.not('.order, .remove, .hidden-by-conditional-logic');
+						
+						
+						// set custom widths first
+						$th.filter('[data-width]').each(function(){
+							
+							// vars
+							var width = parseInt( $(this).attr('data-width') );
+							
+							
+							// remove from available
+							available_width -= width;
+							
+							
+							// set width
+							$(this).css('width', width + '%');
+							
+						});
+						
+						
+						// update $th
+						$th = $th.not('[data-width]');
+						
+						
+						// set custom widths first
+						$th.each(function(){
+							
+							// cal width
+							var width = available_width / $th.length;
+							
+							
+							// set width
+							$(this).css('width', width + '%');
+							
+						});
+						
+					}
 					
-					return false;
-					
-				}
-				
-				
-				// increase counter
-				count++;
-				
-				
-				// vars
-				var width = parseInt( $(this).attr('data-width') );
-				
-				
-				// remove from available
-				available_width -= width;
-				
-				
-				// set width
-				$(this).attr('width', width + '%');
-				
-			});
-			
-			
-			// set custom widths first
-			$th.not('[data-width]').each(function(){
-				
-				// bail early if hit limit
-				if( (count+1) == $th.length ) {
-					
-					return false;
-					
-				}
-				
-				
-				// increase counter
-				count++;
-				
-				
-				// cal width
-				var width = available_width / $th.length;
-				
-				
-				// set width
-				$(this).attr('width', width + '%');
-				
-			});
-			
-		}
-		
-	});
+				});
 
-})(jQuery);
+			})(jQuery);
 
 (function($){
 	
@@ -193,7 +164,8 @@
 		actions: {
 			'ready':	'initialize',
 			'append':	'initialize',
-			'submit':	'close_sidebar'
+			'submit':	'close_sidebar',
+			'show': 	'resize'
 		},
 		
 		events: {
@@ -464,9 +436,19 @@
 			this.$el.find('.bulk-actions').hide();
 			
 			
+			// vars
+			var width = this.$el.width() / 3;
+			
+			
+			// set minimum width
+			width = parseInt( width );
+			width = Math.max( width, 350 );
+			
+			
 			// animate
-			this.$el.find('.acf-gallery-main').animate({ right : 350 }, 250);
-			this.$el.find('.acf-gallery-side').animate({ width : 349 }, 250);
+			this.$el.find('.acf-gallery-side-inner').css({ 'width' : width-1 });
+			this.$el.find('.acf-gallery-side').animate({ 'width' : width-1 }, 250);
+			this.$el.find('.acf-gallery-main').animate({ 'right' : width }, 250);
 			
 		},
 		
@@ -814,7 +796,8 @@
 			
 			
 			// reference
-			var self = this;
+			var self = this,
+				$field = this.$field;
 			
 			
 			// popup
@@ -834,6 +817,10 @@
 					var atts = attachment.attributes;
 					
 					
+					// focus
+					self.doFocus($field);
+							
+							
 					// is image already in gallery?
 					if( self.get_attachment(atts.id).exists() ) {
 					
@@ -852,11 +839,10 @@
 				    	url:		''
 			    	};
 			    	
-			    	
 			    	// type
 			    	if( a.type === 'image' ) {
 				    	
-				    	a.url = acf.maybe_get(atts, 'sizes', preview_size, 'url') || atts.url;
+				    	a.url = atts['sizes'][preview_size]['url'];
 				    	
 			    	} else {
 				    	
@@ -887,7 +873,7 @@
 			
 		},
 		
-		resize : function(){
+		resize: function(){
 			
 			// vars
 			var min = 100,
@@ -897,7 +883,7 @@
 			
 			
 			// get width
-			for( var i = 0; i < 10; i++ ) {
+			for( var i = 4; i < 20; i++ ) {
 			
 				var w = width/i;
 				
@@ -909,7 +895,11 @@
 				}
 				
 			}
-						
+			
+			
+			// max columns css is 8
+			columns = Math.min(columns, 8);
+			
 			
 			// update data
 			this.$el.attr('data-columns', columns);

@@ -44,6 +44,10 @@ This version works only with ACF 5.
 
 
 ### Changelog
+**1.0.7**
+* Version only for ACF 5.2.7
+* Fixed: Error adding images
+
 **1.0.6**
 * Version only for ACF 5.2.7
 * Fixed: Error adding images
