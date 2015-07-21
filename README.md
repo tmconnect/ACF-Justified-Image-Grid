@@ -63,7 +63,7 @@ Returns an array for the specific image
 
 ### jig_get_image_url()
 
-`jig_get_image_ID( $field, $image_number, $size, $post_id )`
+`jig_get_image_url( $field, $image_number, $size, $post_id )`
 
 Returns the URL of the specific image
 
