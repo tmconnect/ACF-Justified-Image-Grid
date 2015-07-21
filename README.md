@@ -34,6 +34,59 @@ Images are added to the grid by the Gallery Field of ACF which is used by the pl
 
 ![advanced custom field justified image grid field settings](http://www.dreihochzwo.de/download/acf-justified-image-grid-gallery-field.jpg)
 
+### New in version 1.1.0
+
+There are 4 new functions to display one specific image from grid or to get infos of this image; such as image ID, image url or image src (similar to the WP function `wp_get_attachment_image_src`).
+
+### jig_image()
+
+`jig_image( $field, $image_number, $size, $post_id )`
+
+Diplays the specific image
+
+### jig_get_image_ID()
+
+`jig_get_image_ID( $field, $image_number, $size, $post_id )`
+
+Returns the ID of the specific image
+
+### jig_get_image_ID()
+
+`jig_get_image_src( $field, $image_number, $size, $post_id )`
+
+Returns an array for the specific image
+
+* [0] => url
+* [1] => width
+* [2] => height
+* [3] => boolean: true if $url is a resized image, false if it is the original or if no image is available.
+
+### jig_get_image_url()
+
+`jig_get_image_ID( $field, $image_number, $size, $post_id )`
+
+Returns the URL of the specific image
+
+These are the parameters for each function:
+
+**$field**<br/>
+(string) (required) The ACF field that hold the acf_justified_image_grid.<br/>
+Default: None
+
+**$image_number**<br/>
+(integer) (optional) The number of the image that should be display. No array counting - the numbering starts at 1<br/>
+Default: 1
+
+**$size**<br/>
+(string) (optional) Any of the standard image sizes (thumbnail, medium, large, full, or post-thumbnail (if the theme support the post thumbnail)) or any if defined image size of the theme.<br/>
+Default: thumbnail
+
+**$post_id**<br/>
+(integer) (optional) Post ID. If null, the current post will be used.<br/>
+Default: null
+
+Each function returns false if no image/ image value is found.
+
 Thanks to
 <a href="http://miromannino.github.io/Justified-Gallery/" title="Justified Gallery Homepage" target="_blank">Miro Mannino</a> for the Justified Gallery and <a href="http://brutaldesign.github.io/swipebox/" title="Swipebox Homepage" target="_blank">Constantin Saguin</a> for the Swipebox
 
@@ -44,6 +97,10 @@ This version works only with ACF 5.
 
 
 ### Changelog
+**1.1.0**
+* Version only for ACF 5.2.7
+* New: Functions to get an image or image infos of specific image of the grid
+
 **1.0.7**
 * Version only for ACF 5.2.7
 * Fixed: Error adding images

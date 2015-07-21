@@ -967,4 +967,92 @@ function get_image_sizes() {
 
 	return $imagessizes;
 }
+
+function jig_image( $field, $jig_ID = 1, $size = 'thumbnail', $post_id = null ) {
+	global $post;
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+
+	if (!get_field($field, $post_id))
+		return false;
+
+	$jig_ID = $jig_ID - 1;
+
+	$img_array = get_field($field, $post_id, false);
+	if ( !in_array($jig_ID, $img_array) ) {
+		$jig_ID = 0;
+	}
+	$img_url = wp_get_attachment_image( $img_array[$jig_ID], $size );
+	
+	if (!$img_url)
+		return false;
+
+	echo $img_url;
+}
+
+function jig_get_image_ID( $field, $jig_ID = 1, $size = 'thumbnail', $post_id = null ) {
+	global $post;
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+
+	if (!get_field($field, $post_id))
+		return false;
+
+	$jig_ID = $jig_ID - 1;
+
+	$img_array = get_field($field, $post_id, false);
+	if ( !in_array($jig_ID, $img_array) ) {
+		$jig_ID = 0;
+	}
+	$img_ID = $img_array[$jig_ID];
+	
+	if (!$img_ID)
+		return false;
+
+	return $img_ID;
+}
+
+function jig_get_image_src( $field, $jig_ID = 1, $size = 'thumbnail', $post_id = null ) {
+	global $post;
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+
+	if (!get_field($field, $post_id))
+		return false;
+
+	$img_url = array();
+
+	$jig_ID = $jig_ID - 1;
+
+	$img_array = get_field($field, $post_id, false);
+	if ( !in_array($jig_ID, $img_array) ) {
+		$jig_ID = 0;
+	}
+	$img_url = wp_get_attachment_image_src( $img_array[$jig_ID], $size );
+	
+	if (!$img_url)
+		return false;
+
+	return $img_url;
+}
+
+function jig_get_image_url( $field, $jig_ID = 1, $size = 'thumbnail', $post_id = null ) {
+	global $post;
+	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
+
+	if (!get_field($field, $post_id))
+		return false;
+
+	$img_url = array();
+
+	$jig_ID = $jig_ID - 1;
+
+	$img_array = get_field($field, $post_id, false);
+	if ( !in_array($jig_ID, $img_array) ) {
+		$jig_ID = 0;
+	}
+	$img_url = wp_get_attachment_image_src( $img_array[$jig_ID], $size );
+	
+	if (!$img_url)
+		return false;
+
+	return $img_url[0];
+}
 ?>
