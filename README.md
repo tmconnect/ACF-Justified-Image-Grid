@@ -44,13 +44,13 @@ There are 4 new functions to display one specific image from grid or to get info
 
 Diplays the specific image
 
-### jig_get_image_ID()
+### jig_get_image_id()
 
-`jig_get_image_ID( $field, $image_number, $size, $post_id )`
+`jig_get_image_id( $field, $image_number, $size, $post_id )`
 
 Returns the ID of the specific image
 
-### jig_get_image_ID()
+### jig_get_image_scr()
 
 `jig_get_image_src( $field, $image_number, $size, $post_id )`
 

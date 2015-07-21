@@ -989,7 +989,7 @@ function jig_image( $field, $jig_ID = 1, $size = 'thumbnail', $post_id = null ) 
 	echo $img_url;
 }
 
-function jig_get_image_ID( $field, $jig_ID = 1, $size = 'thumbnail', $post_id = null ) {
+function jig_get_image_id( $field, $jig_ID = 1, $size = 'thumbnail', $post_id = null ) {
 	global $post;
 	$post_id = ( null === $post_id ) ? get_the_ID() : $post_id;
 
