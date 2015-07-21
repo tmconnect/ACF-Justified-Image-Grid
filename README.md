@@ -74,7 +74,7 @@ These are the parameters for each function:
 Default: None
 
 **$image_number**<br/>
-(integer) (optional) The number of the image that should be display. No array counting - the numbering starts at 1<br/>
+(integer) (optional) The number of the image that should be display. No array counting - the numbering starts at 1. If the number is greater than the number of images in the grid the functions use the first image of the grid as a fallback.<br/>
 Default: 1
 
 **$size**<br/>
