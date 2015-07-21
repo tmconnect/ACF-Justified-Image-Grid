@@ -78,7 +78,7 @@ Default: None
 Default: 1
 
 **$size**<br/>
-(string) (optional) Any of the standard image sizes (thumbnail, medium, large, full, or post-thumbnail (if the theme support the post thumbnail)) or any if defined image size of the theme.<br/>
+(string) (optional) Any of the standard image sizes (thumbnail, medium, large, full, or post-thumbnail (if the theme supports the post thumbnail)) or any of the defined image sizes of the theme.<br/>
 Default: thumbnail
 
 **$post_id**<br/>
