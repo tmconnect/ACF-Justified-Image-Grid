@@ -710,9 +710,7 @@ class acf_field_justified_image_grid extends acf_field {
 							<?php endif; ?>
 						</div>
 						<div class="actions acf-soh-target">
-							<a class="acf-icon dark remove-attachment" data-id="<?php echo $post->ID; ?>" href="#">
-								<i class="acf-sprite-delete"></i>
-							</a>
+							<a class="acf-icon -cancel dark remove-attachment" data-id="<?php echo $post->ID; ?>" href="#"></a>
 						</div>
 					</div>
 					

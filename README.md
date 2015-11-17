@@ -97,6 +97,10 @@ This version works only with ACF 5.
 
 
 ### Changelog
+**1.1.1**
+* Version only for ACF 5.2.7
+* Fixed delete icon on gallery overview
+
 **1.1.0**
 * Version only for ACF 5.2.7
 * New: Functions to get an image or image infos of specific image of the grid
