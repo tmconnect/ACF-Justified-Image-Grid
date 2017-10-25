@@ -2,9 +2,9 @@
 
 /*
 Plugin Name: Advanced Custom Fields: Justified Image Grid
-Plugin URI: http://www.dreihochzwo.de/wordpress-plugins/advanced-custom-fields-addon-justified-image-grid/
+Plugin URI: https://dreihochzwo.de/wordpress-plugins/advanced-custom-fields-addon-justified-image-grid/
 Description: Generates an image grid with the gallery field of ACF 5 Pro
-Version: 1.1.1
+Version: 1.2.0
 Author: Thomas Meyer
 Author URI: http://www.dreihochzwo.de
 License: GPLv2 or later

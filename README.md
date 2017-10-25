@@ -97,6 +97,9 @@ This version works only with ACF 5.
 
 
 ### Changelog
+**1.2.0**
+* Fixed admin gallery functions
+
 **1.1.1**
 * Version only for ACF 5.2.7
 * Fixed delete icon on gallery overview
