@@ -64,8 +64,8 @@ class acf_field_justified_image_grid extends acf_field {
 		// Settings
 		$this->settings = array(
 			'justified_version'	=> '3.5.4',
-			'swipebox_version'	=> '1.3.0.2',
-			'acf_jig_version'	=> '1.2.0',
+			'swipebox_version'	=> '1.5.1',
+			'acf_jig_version'	=> '1.2.1',
 			'justified_css' 	=> plugin_dir_url( __FILE__ ) . 'css/justifiedGallery.css',
 			'justified_js'		=> plugin_dir_url( __FILE__ ) . 'js/jquery.justifiedGallery.js',
 			'swipebox_css' 		=> plugin_dir_url( __FILE__ ) . 'js/swipebox/css/swipebox.css',
